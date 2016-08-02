@@ -1,13 +1,11 @@
 class UsersController < ApplicationController
-  before_action :find_user, only: [:show, :update, :destroy]
+  before_action :find_user, only: [:show, :update, :destroy, :edit]
 
   def index
     @users = User.all
-    render json: @users
   end
 
   def show
-    render json: @user
   end
 
   def create
@@ -39,6 +37,7 @@ class UsersController < ApplicationController
   end
 
   def new
+    @user = User.new
   end
 
   private

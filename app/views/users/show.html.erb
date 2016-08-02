@@ -1,2 +1,63 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+
+<h1><%= @user.username %></h1>
+<h3>Contacts</h3>
+<table>
+  <thead>
+    <tr>
+      <th>
+        name
+      </th>
+      <th>
+        email
+      </th>
+      <th>
+        Action
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @user.contacts.each do |contact| %>
+      <tr>
+        <td>
+          <%= contact.name %>
+        </td>
+        <td>
+          <%= contact.email %>
+        </td>
+        <td>
+          <%= button_to 'Delete', contact, method: :delete %>
+        </td>
+        <td>
+          <%= button_to 'Edit', edit_user_contact_url(@user, contact), method: :get %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<h3>Shared Contacts</h3>
+<table>
+  <thead>
+    <tr>
+      <th>
+        name
+      </th>
+      <th>
+        email
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @user.shared_contacts.each do |contact| %>
+      <tr>
+        <td>
+          <%= contact.name %>
+        </td>
+        <td>
+          <%= contact.email %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= button_to 'Create Contact', new_user_contact_url(@user), method: :get %>
+<%= button_to 'back', users_url, method: :get %>

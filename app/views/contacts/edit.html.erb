@@ -1,0 +1,8 @@
+<h1>Edit Contact</h1>
+<%= form_for @contact, url: user_contact_url(@user, @contact) do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.label :email %>
+  <%= f.text_field :email %>
+  <%= f.submit %>
+<% end %>
